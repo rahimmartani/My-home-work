@@ -8,30 +8,27 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
+    Button {
+        id: button1
+        x: 250
+        y: 124
+        text: "presshere"
+        onClicked:{
 
-        Page1 {
+            textArea.append(myfunction.networkfunction(button1.text));
+
         }
 
-        Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
-            }
-        }
     }
 
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("First")
-        }
-        TabButton {
-            text: qsTr("Second")
-        }
+    TextArea {
+        id: textArea
+        x: 217
+        y: 251
+        width: 188
+        height: 158
+        text: "Text Area"
     }
+
+
 }
