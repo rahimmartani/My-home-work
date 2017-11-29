@@ -1,18 +1,21 @@
-#ifndef NETWORK_H
-#define NETWORK_H
+#ifndef NETWORKMANAGER_H
+#define NETWORKMANAGER_H
 
 #include <QObject>
+#include <QNetworkAccessManager>
+#include <QString>
 
-class network : public QObject
+class NetworkManager : public QObject
 {
     Q_OBJECT
+    QNetworkAccessManager* manager;
 public:
-    explicit network(QObject *parent = nullptr);
-
+    explicit NetworkManager(QObject *parent = 0);
+    Q_INVOKABLE QString loadWebPage();
 signals:
 
 public slots:
-    QString networkfunction(QString in);
+    QString myReplyFinished(QNetworkReply* reply);
 };
 
-#endif // NETWORK_H
+#endif // NETWORKMANAGER_H

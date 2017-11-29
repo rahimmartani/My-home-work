@@ -15,7 +15,7 @@ ApplicationWindow {
         text: "presshere"
         onClicked:{
 
-            textArea.append(myfunction.networkfunction(button1.text));
+            textArea.append(myfunction.loadWebPage());
 
         }
 
