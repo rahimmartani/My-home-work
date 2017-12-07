@@ -1,22 +1,26 @@
 #include <QCoreApplication>
-#include "network.h"
-#include <QGuiApplication>
+#include "networkmanager.h"
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <network.h>
+#include <networkmanager.h>
+
+
 int main(int argc, char *argv[])
 {
 
    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
    if (engine.rootObjects().isEmpty())
         return -1;
+   NetworkManager* manager= new NetworkManager();
+   manager->loadWebPage();
 
-NetworkManager h;
-        engine.rootContext()->setContextProperty("myfunction",&h);
+
+        engine.rootContext()->setContextProperty("myfunction", manager);
 
     return app.exec();
 }
